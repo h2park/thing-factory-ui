@@ -12,7 +12,11 @@ export function createThing(templateUrl, callback) {
 
     const schema = applyOwnerPermissions(originalSchema, meshbluConfig.uuid)
     const meshblu = new MeshbluHttp(meshbluConfig)
-    meshblu.register(schema, (error) => callback(error))
+    meshblu.register(schema, (error, device) => {
+      if (error) return callback(error)
+
+      callback(null, {uuid: device.uuid})
+    })
   })
 }
 

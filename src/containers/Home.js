@@ -14,7 +14,12 @@ class Home extends React.Component {
   }
 
   handleBuildThing = () => {
-    createThing(this.templateUrl, (error) => this.setState({ error }))
+    createThing(this.templateUrl, (error, device) => {
+      if (error) return this.setState({ error })
+
+      const { uuid } = device
+      window.location.href = `https://app.octoblu.com/device/${uuid}`
+    })
   }
 
   render() {
