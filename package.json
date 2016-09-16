@@ -1,91 +1,88 @@
 {
-  "name": "zooid-thing-factory-ui",
-  "version": "0.0.1",
-  "description": "ThingFactoryUi",
-  "main": "dist/bundle.js",
+  "name": "thing-factory-ui",
+  "version": "1.0.0",
+  "description": "thing-factory-ui",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "build:storybook": "build-storybook -o storybook-build",
-    "clean": "rimraf lib dist coverage",
-    "coverage": "nyc report --reporter=lcov",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
-    "lint:js": "eslint src stories",
-    "lint:js:fix": "eslint src stories --fix",
-    "lint:css": "stylelint ./src/**/*.css",
-    "lint:css:fix": "stylefmt ./src/**/*.css",
-    "start": "npm run storybook",
-    "storybook": "start-storybook -p 9001",
-    "test": "nyc --require babel-core/register --require babel-polyfill mocha",
-    "test:watch": "mocha -w -R mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/octoblu/zooid-thing-factory-ui.git"
+    "clean": "rimraf dist",
+    "build": "node scripts/build.js",
+    "start": "node scripts/start.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "NODE_ENV=test mocha",
+    "test:watch": "npm run test -- --watch --reporter mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
   },
   "keywords": [
     "zooid",
-    "zooid-ui",
+    "zooid-app",
     "react",
-    "reactjs",
-    "octoblu"
+    "babel",
+    "webpack"
   ],
-  "author": "Octoblu Inc",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/octoblu/zooid-thing-factory-ui/issues"
+  "homepage": "https://github.com/octoblu/thing-factory-ui",
+  "bugs": "https://github.com/octoblu/thing-factory-ui/issues",
+  "author": {
+    "name": "Octoblu Inc",
+    "url": "https://github.com/octoblu"
   },
-  "homepage": "https://github.com/octoblu/zooid-thing-factory-ui#readme",
-  "nyc": {
-    "include": [
-      "src"
-    ],
-    "exclude": [
-      "src/**/*.spec.js",
-      "src/**/*.css"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octoblu/thing-factory-ui.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "atob": "^2.0.3",
+    "browser-meshblu-http": "^5.4.0",
+    "react": "^15.2.1",
+    "react-cookie": "^0.4.8",
+    "react-dom": "^15.2.1",
+    "react-router": "^2.6.0",
+    "zooid-button": "^1.2.2",
+    "zooid-spinner": "^1.0.1"
   },
   "devDependencies": {
-    "@kadira/react-storybook-addon-info": "^3.2.1",
-    "@kadira/storybook": "^2.1.1",
-    "babel-cli": "^6.7.7",
-    "babel-core": "^6.7.7",
+    "autoprefixer": "^6.3.7",
+    "babel-core": "^6.11.4",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
+    "babel-plugin-webpack-alias": "^1.8.2",
+    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
+    "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.9.0",
+    "babel-register": "^6.11.6",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.0",
-    "css-loader": "^0.23.1",
+    "chalk": "^1.1.3",
+    "connect-history-api-fallback": "^1.3.0",
+    "css-loader": "^0.24.0",
     "css-modules-require-hook": "^4.0.1",
-    "enzyme": "^2.3.0",
-    "eslint": "^3.2.2",
-    "eslint-plugin-import": "^1.12.0",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
-    "eslint-plugin-react": "^6.0.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "ignore-styles": "^4.0.0",
-    "jsdom": "^9.1.0",
-    "mocha": "^3.0.0",
-    "mocha-multi": "^0.9.1",
+    "enzyme": "^2.4.1",
+    "eslint": "^3.1.1",
+    "eslint-import-resolver-webpack": "^0.5.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-react": "^6.2.0",
+    "eventsource-polyfill": "^0.9.6",
+    "file-loader": "^0.9.0",
+    "filesize": "^3.3.0",
+    "gzip-size": "^3.0.0",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.22.0",
+    "jsdom": "^9.4.2",
+    "mocha": "^3.0.2",
+    "mocha-multi": "^0.9.0",
     "mocha-osx-reporter": "^0.1.2",
-    "nyc": "^7.1.0",
-    "postcss-loader": "^0.9.1",
-    "react-addons-test-utils": "^15.3.0",
-    "rimraf": "^2.5.2",
-    "sinon": "^1.17.3",
+    "nyc": "^8.1.0",
+    "postcss-loader": "^0.10.0",
+    "react-addons-test-utils": "^15.2.1",
+    "recursive-readdir": "^2.0.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
+    "strip-ansi": "^3.0.1",
     "style-loader": "^0.13.1",
-    "stylefmt": "^4.2.3",
-    "stylelint": "^7.1.0",
-    "stylelint-config-standard": "^12.0.0",
-    "webpack": "^1.13.0"
-  },
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.15.0"
   }
 }
