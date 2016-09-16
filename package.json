@@ -41,7 +41,8 @@
     "react-router": "^2.6.0",
     "zooid-button": "^1.2.2",
     "zooid-page": "^3.0.0",
-    "zooid-spinner": "^1.0.1"
+    "zooid-spinner": "^1.0.1",
+    "zooid-ui": "^8.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
