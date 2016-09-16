@@ -106,6 +106,9 @@ module.exports = {
       }
     ]
   },
+  node: {
+    fs: 'empty'
+  },
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [

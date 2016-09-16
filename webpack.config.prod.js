@@ -135,6 +135,9 @@ module.exports = {
       }
     ]
   },
+  node: {
+    fs: 'empty'
+  },
   postcss: function() {
     return [
      autoprefixer({

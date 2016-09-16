@@ -33,11 +33,14 @@
   "dependencies": {
     "atob": "^2.0.3",
     "browser-meshblu-http": "^5.4.0",
+    "json-schema-ref-parser": "^3.1.2",
+    "lodash": "^4.15.0",
     "react": "^15.2.1",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.2.1",
     "react-router": "^2.6.0",
     "zooid-button": "^1.2.2",
+    "zooid-page": "^3.0.0",
     "zooid-spinner": "^1.0.1"
   },
   "devDependencies": {
