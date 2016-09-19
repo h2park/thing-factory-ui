@@ -1,0 +1,12 @@
+FROM node:5
+
+RUN mkdir /usr/local/app
+WORKDIR /usr/local/app
+
+COPY package.json .
+RUN npm install
+
+COPY . /usr/local/app
+
+CMD ["npm", "test"]
+

@@ -1,6 +1,6 @@
 {
   "name": "thing-factory-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "thing-factory-ui",
   "main": "index.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "react-dom": "^15.2.1",
     "react-router": "^2.6.0",
     "regjsgen": "^0.3.0",
+    "regjsparser": "^0.2.0",
     "zooid-button": "^1.2.2",
     "zooid-page": "^3.0.0",
     "zooid-spinner": "^1.0.1",
