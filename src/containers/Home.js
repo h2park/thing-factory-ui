@@ -37,7 +37,8 @@ class Home extends React.Component {
   }
 
   handleBuildThing = () => {
-    createThing(this.templateUrl, (error, device) => {
+    const { templateUrl } = this
+    createThing({ templateUrl }, (error, device) => {
       if (error) return this.setState({ error })
 
       const { uuid } = device
