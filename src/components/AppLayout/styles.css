@@ -1,0 +1,78 @@
+.appBarPrimary {
+  align-items: stretch;
+}
+
+.appBarPrimaryLink {
+  text-decoration: none;
+  padding: 1em;
+}
+
+.appBarPrimaryLink,
+.appBarPrimaryLink:active,
+.appBarPrimaryLink:focus,
+.appBarPrimaryLink:hover {
+  color: #E9F2FB;
+}
+
+.appBarPrimaryLink:hover {
+  color: #fff;
+  background-color: rgba(0,0,0,0.1)
+}
+
+.appBarPrimaryLink span {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  display: inline-block;
+}
+
+.header {
+  font-size: 4em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.navIcon {
+  padding: 1em;
+}
+
+.navIcon,
+.navIcon:active,
+.navIcon:focus {
+  color: #E9F2FB;
+}
+
+.navIcon:hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.1)
+}
+
+.apologeticExplanation {
+  font-size: 1.5em;
+  text-align: center;
+
+  padding-bottom: 3em;
+}
+
+.navLogoLink {
+  padding: 0 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navLogoLink:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.navLogo {
+  height: 26px;
+  width: 125px;
+}

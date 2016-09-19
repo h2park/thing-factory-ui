@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react'
-import {Link} from 'react-router'
 import Button from 'zooid-button'
-import Page from 'zooid-page'
-import {AppBar, AppBarPrimary} from 'zooid-ui'
+import ErrorState from 'zooid-error-state'
 
 import 'zooid-ui/dist/style.css'
 import styles from './styles.css'
@@ -20,17 +18,10 @@ const HomePage = ({ error, onBuildThing }) => {
     onBuildThing()
   }
 
+  if (error) return <ErrorState description={error.message}  />
+
   return <div className={styles.wrapper}>
-    <AppBar className={styles.appBar}>
-      <AppBarPrimary className={styles.appBarPrimary}>
-        <Link to="/" className={styles.appBarPrimaryLink}>Thing Factory</Link>
-      </AppBarPrimary>
-    </AppBar>
-    <Page error={error} className={styles.pulse}>
-      <h1 className={styles.header}>Thing Factory</h1>
-      <p className={styles.apologeticExplanation}>CLick this buttTTon fto make uur thang</p>
-      <Button kind="primary" size="large" onClick={onClick} className={styles.button}>Build Thing</Button>
-    </Page>
+    <Button kind="primary" size="large" onClick={onClick} className={styles.button}>Build Thing</Button>
   </div>
 }
 

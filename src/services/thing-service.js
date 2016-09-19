@@ -7,7 +7,7 @@ import {getMeshbluConfig} from './auth-service'
 export function createThing(templateUrl, callback) {
   const meshbluConfig = getMeshbluConfig()
 
-  RefParser.dereference({$ref: templateUrl}, (error, originalSchema) => {
+  fetchTemplate(templateUrl, (error, originalSchema) => {
     if (error) return callback(error)
 
     const schema = applyOwnerPermissions(originalSchema, meshbluConfig.uuid)
@@ -18,6 +18,12 @@ export function createThing(templateUrl, callback) {
       callback(null, {uuid: device.uuid})
     })
   })
+}
+
+export function fetchTemplate(templateUrl, callback) {
+  if (_.isEmpty(templateUrl)) return callback(new Error('templateUrl is required'))
+
+  RefParser.dereference({$ref: templateUrl}, callback)
 }
 
 function applyOwnerPermissions(originalSchema, ownerUuid) {

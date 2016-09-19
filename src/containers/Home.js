@@ -1,16 +1,28 @@
 import React from 'react'
 
 import HomePage from '../components/HomePage'
-import { createThing } from '../services/thing-service'
+import { createThing, fetchTemplate } from '../services/thing-service'
+
+const propTypes = {
+  location: React.PropTypes.object,
+}
 
 class Home extends React.Component {
   state = {
     error: null,
+    template: null,
   }
 
   constructor(props) {
     super(props)
     this.templateUrl = props.location.query.templateUrl
+  }
+
+  componentDidMount() {
+    fetchTemplate(this.templateUrl, (error, template) => {
+      if (error) return this.setState({ error })
+      this.setState({ template })
+    })
   }
 
   handleBuildThing = () => {
@@ -28,5 +40,7 @@ class Home extends React.Component {
     return <HomePage error={error} onBuildThing={this.handleBuildThing} />
   }
 }
+
+Home.propTypes = propTypes
 
 export default Home

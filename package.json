@@ -1,6 +1,6 @@
 {
   "name": "thing-factory-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "thing-factory-ui",
   "main": "index.js",
   "scripts": {
@@ -44,6 +44,8 @@
     "regjsparser": "^0.2.0",
     "strict-uri-encode": "^1.1.0",
     "zooid-button": "^1.2.2",
+    "zooid-error-state": "^1.3.0",
+    "zooid-octoblu-nav-logo": "^1.1.0",
     "zooid-page": "^3.0.0",
     "zooid-spinner": "^1.0.1",
     "zooid-ui": "^8.0.0"

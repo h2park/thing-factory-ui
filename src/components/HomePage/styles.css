@@ -1,97 +1,9 @@
-@keyframes throb {
-  0% { filter: blur(0); }
-  50% { filter: blur(1px); }
-  100% { filter: blur(0); }
-}
-
-@keyframes wtf {
-  0% { letter-spacing: 0; }
-  50% { letter-spacing: 2px; }
-  100% { letter-spacing: 0; }
-}
-
-.main {
-  padding: 0 1em;
-}
-
-.appBar {
-  background-color: #ff00ff;
-  font-size: 5em;
-  height: 140px;
-}
-
-.appBarPrimaryLink {
-  text-decoration: none;
-  padding: 1em;
-}
-
-.appBarPrimaryLink,
-.appBarPrimaryLink:active,
-.appBarPrimaryLink:focus,
-.appBarPrimaryLink:hover {
-  color: #E9F2FB;
-}
-
-.appBarPrimaryLink:hover {
-  color: #fff;
-  background-color: rgba(0,0,0,0.1)
-}
-
-.appBarPrimaryLink span {
-  animation-name: spin;
-  animation-duration: 5000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  display: inline-block;
-}
-
-.header {
-  font-size: 10em;
-  padding-bottom: 1em;
-  text-align: center;
-}
-
 .button {
-  font-size: 5em;
+  font-size: 2em;
   position: relative;
 }
 
 .wrapper {
-  height: 100%;
-}
-
-.pulse {
-  animation-duration: 20ms;
-  animation-name: throb;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-}
-
-.navIcon {
-  padding: 1em;
-}
-
-.navIcon,
-.navIcon:active,
-.navIcon:focus {
-  color: #E9F2FB;
-}
-
-.navIcon:hover {
-  color: #fff;
-  cursor: pointer;
-  background-color: rgba(0,0,0,0.1)
-}
-
-.apologeticExplanation {
-  font-size: 2em;
   text-align: center;
-
-  animation-name: wtf;
-  animation-duration: 1000ms;
-  animation-iteration-count: infinite;
-
-  padding-bottom: 3em;
-  padding-left: 3em;
-  transform: rotateZ(-3deg);
+  height: 100%;
 }
