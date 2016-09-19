@@ -1,6 +1,6 @@
 {
   "name": "thing-factory-ui",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "thing-factory-ui",
   "main": "index.js",
   "scripts": {

@@ -4,10 +4,10 @@ import _ from 'lodash'
 
 import {getMeshbluConfig} from './auth-service'
 
-export function createThing(templateUrl, callback) {
+export function createThing({ templateUrl }, callback) {
   const meshbluConfig = getMeshbluConfig()
 
-  fetchTemplate(templateUrl, (error, originalSchema) => {
+  fetchTemplate({ templateUrl }, (error, originalSchema) => {
     if (error) return callback(error)
 
     const schema = applyOwnerPermissions(originalSchema, meshbluConfig.uuid)
@@ -20,7 +20,7 @@ export function createThing(templateUrl, callback) {
   })
 }
 
-export function fetchTemplate(templateUrl, callback) {
+export function fetchTemplate({ templateUrl }, callback) {
   if (_.isEmpty(templateUrl)) return callback(new Error('templateUrl is required'))
 
   RefParser.dereference({$ref: templateUrl}, callback)
