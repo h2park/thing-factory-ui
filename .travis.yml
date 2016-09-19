@@ -5,7 +5,7 @@ branches:
   only:
   - /^v[0-9]/
 env:
-  global: CDN=https://thing-factory-ui-static.octoblu.com
+  global: CDN=https://thing-factory-static.octoblu.com
 after_success:
 - npm run build
 - export PKG_VERSION="$(node -e 'console.log(require("./package.json").version)')"
