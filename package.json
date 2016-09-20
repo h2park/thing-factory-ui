@@ -9,8 +9,10 @@
     "start": "node scripts/start.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "test": "NODE_ENV=test mocha",
-    "test:watch": "npm run test -- --watch --reporter mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
+    "test": "mocha",
+    "test:watch": "mocha -w -R mocha-multi --reporter-options spec=-,mocha-osx-reporter=-",
+    "coverage": "nyc npm test",
+    "mocha:json": "mocha --reporter json > coverage/mocha.json"
   },
   "keywords": [
     "zooid",
@@ -94,5 +96,20 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.15.0"
+  },
+  "nyc": {
+    "cache": true,
+    "reporter": [
+      "text-summary",
+      "lcov",
+      "json"
+    ],
+    "require": [
+      "babel-core/register",
+      "babel-polyfill"
+    ],
+    "extension": [
+      ".coffee"
+    ]
   }
 }
