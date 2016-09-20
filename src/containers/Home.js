@@ -13,6 +13,7 @@ class Home extends React.Component {
   state = {
     error: null,
     registryItem: null,
+    loading: true,
   }
 
   constructor(props) {
@@ -24,8 +25,8 @@ class Home extends React.Component {
     const { registryItemUrl } = this
 
     fetchRegistryItem({ registryItemUrl }, (error, registryItem) => {
-      if (error) return this.setState({ error })
-      this.setState({ registryItem })
+      if (error) return this.setState({ error, loading: false })
+      this.setState({ registryItem, loading: false })
     })
   }
 
@@ -41,11 +42,16 @@ class Home extends React.Component {
   }
 
   render() {
-    const { error } = this.state
+    const { error, loading } = this.state
     const iconUri = _.get(this.state, 'registryItem.iconUri')
     const name = _.get(this.state, 'registryItem.name')
 
-    return <HomePage error={error} title={name} iconUrl={iconUri} onBuildThing={this.handleBuildThing} />
+    return <HomePage
+      error={error}
+      loading={loading}
+      title={name}
+      iconUrl={iconUri}
+      onBuildThing={this.handleBuildThing} />
   }
 }
 

@@ -4,6 +4,7 @@ import Spinner from 'zooid-spinner'
 
 import { OAUTH_CLIENT_ID, OAUTH_PROVIDER_URI } from 'config'
 import { fetchOctobluUser } from '../services/auth-service'
+import HomePage from '../components/HomePage'
 
 export default class Authenticated extends Component {
   state = {
@@ -56,7 +57,7 @@ export default class Authenticated extends Component {
     const { octobluUser } = this.state
     const { children }    = this.props
 
-    if (!octobluUser) return <Spinner size="large"/>
+    if (!octobluUser) return <div style={{alignSelf: 'center'}}><Spinner size="large"/></div>
     return <div>{children}</div>
   }
 }
