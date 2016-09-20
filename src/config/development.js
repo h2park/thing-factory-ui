@@ -1,4 +1,5 @@
 export const APP_OCTOBLU_URL = 'https://app.octoblu.com'
+export const DEFAULT_ICON_URL = 'https://icons.octoblu.com/device/display.svg'
 export const OAUTH_CLIENT_ID = 'b87c584d-97f6-47a9-98ab-8761c8bf67dc'
 export const OAUTH_PROVIDER_URI = 'https://oauth.octoblu.com'
 export const MESHBLU_HOST = 'meshblu-http.octoblu.com'

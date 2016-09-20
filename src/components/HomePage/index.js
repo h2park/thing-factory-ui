@@ -28,7 +28,7 @@ const HomePage = ({ error, loading, iconUrl, title, onBuildThing }) => {
   return <div className={styles.wrapper}>
     <h1 className={styles.title}>{title}</h1>
     <img src={iconUrl} className={styles.logo} />
-    <Button kind="primary" size="large" onClick={onClick} className={styles.button}>Build</Button>
+    <Button kind="primary" size="large" onClick={onClick} className={styles.button}>Add</Button>
   </div>
 }
 

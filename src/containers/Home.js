@@ -1,6 +1,8 @@
 import _ from 'lodash'
 import React from 'react'
 
+import { DEFAULT_ICON_URL } from 'config'
+
 import HomePage from '../components/HomePage'
 import { fetchRegistryItem } from '../services/registry-service'
 import { createThing, fetchTemplate } from '../services/thing-service'
@@ -43,14 +45,14 @@ class Home extends React.Component {
 
   render() {
     const { error, loading } = this.state
-    const iconUri = _.get(this.state, 'registryItem.iconUri')
+    const iconUrl = _.get(this.state, 'registryItem.iconUri', DEFAULT_ICON_URL)
     const name = _.get(this.state, 'registryItem.name')
 
     return <HomePage
       error={error}
       loading={loading}
       title={name}
-      iconUrl={iconUri}
+      iconUrl={iconUrl}
       onBuildThing={this.handleBuildThing} />
   }
 }
