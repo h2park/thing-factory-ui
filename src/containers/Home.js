@@ -13,31 +13,25 @@ class Home extends React.Component {
   state = {
     error: null,
     registryItem: null,
-    template: null,
   }
 
   constructor(props) {
     super(props)
     this.registryItemUrl = props.location.query.registryItemUrl
-    this.templateUrl = props.location.query.templateUrl
   }
 
   componentDidMount() {
-    const { registryItemUrl, templateUrl } = this
+    const { registryItemUrl } = this
 
     fetchRegistryItem({ registryItemUrl }, (error, registryItem) => {
       if (error) return this.setState({ error })
       this.setState({ registryItem })
     })
-
-    fetchTemplate({ templateUrl }, (error, template) => {
-      if (error) return this.setState({ error })
-      this.setState({ template })
-    })
   }
 
   handleBuildThing = () => {
-    const { templateUrl } = this
+    const templateUrl = _.get(this.state, 'registryItem.templateUrl')
+
     createThing({ templateUrl }, (error, device) => {
       if (error) return this.setState({ error })
 
