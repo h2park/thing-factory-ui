@@ -27,6 +27,28 @@
   display: inline-block;
 }
 
+.appBarSecondary {
+
+}
+
+.logout,
+.logout:active,
+.logout:focus,
+.logout:visited,
+.logout:hover {
+  color: white;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  vertical-align: middle;
+  padding: 1em;
+  line-height: 20px;
+}
+
+.logout:hover {
+  background-color: rgba(0,0,0,0.1)
+}
+
 .header {
   font-size: 4em;
   padding-bottom: 1em;

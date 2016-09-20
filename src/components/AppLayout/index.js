@@ -1,19 +1,22 @@
 import React, { PropTypes } from 'react'
-import {Link} from 'react-router'
 import NavLogo from 'zooid-octoblu-nav-logo'
 import Page from 'zooid-page'
-import {AppBar, AppBarPrimary} from 'zooid-ui'
-
-import {APP_OCTOBLU_URL} from 'config'
+import {AppBar, AppBarPrimary, AppBarSecondary} from 'zooid-ui'
 
 import styles from './styles.css'
 
 const propTypes = {
   children: PropTypes.object,
+  onLogout: PropTypes.func.isRequired,
 }
 const defaultProps = {}
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, onLogout }) => {
+  const onClickLogout = (event) => {
+    event.preventDefault()
+    onLogout()
+  }
+
   return <div>
     <AppBar className={styles.appBar}>
       <AppBarPrimary className={styles.appBarPrimary}>
@@ -21,6 +24,9 @@ const AppLayout = ({ children }) => {
           <NavLogo className={styles.navLogo}/>
         </a>
       </AppBarPrimary>
+      <AppBarSecondary className={styles.appBarSecondary}>
+        <a href onClick={onClickLogout} className={styles.logout}>Sign out</a>
+      </AppBarSecondary>
     </AppBar>
     <Page>
       {children}

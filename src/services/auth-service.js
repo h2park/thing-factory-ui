@@ -40,6 +40,10 @@ export function getBearerToken() {
   return cookie.load('meshbluBearerToken')
 }
 
+export function logout() {
+  cookie.remove('meshbluBearerToken')
+}
+
 export function storeAuthenticationAndRedirect(nextState, replace) {
   const bearerToken = decodeURIComponent(nextState.location.query.access_token)
   const redirectUri = nextState.location.query.redirect_uri
