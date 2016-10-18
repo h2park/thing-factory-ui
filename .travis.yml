@@ -1,30 +1,36 @@
 language: node_js
 node_js:
-- '5'
+  - '5'
 branches:
   only:
-  - /^v[0-9]/
+    - '/^v[0-9]/'
 env:
-  global: CDN=https://thing-factory-static.octoblu.com
+  global: 'CDN=https://thing-factory-static.octoblu.com'
 before_deploy:
-- npm run build
-- export PKG_VERSION="$(node -e 'console.log(require("./package.json").version)')"
-- if [ -z "$PKG_VERSION" ]; then echo 'Missing PKG_VERSION env' && exit 1; fi
-- mkdir -p dpl_assets/v$PKG_VERSION
-- cp -r dist/* dpl_assets/v$PKG_VERSION
+  - npm run build
+  - >-
+    export PKG_VERSION="$(node -e
+    'console.log(require("./package.json").version)')"
+  - 'if [ -z "$PKG_VERSION" ]; then echo ''Missing PKG_VERSION env'' && exit 1; fi'
+  - mkdir -p dpl_assets/v$PKG_VERSION
+  - cp -r dist/* dpl_assets/v$PKG_VERSION
 deploy:
-- provider: s3
-  access_key_id: AKIAJH2D5IPIRHYJT5IA
-  secret_access_key:
-    secure: "i2zBUK6wkRkncRMKgCz7EjKNBJLyw2Vww/mus3MYTtaLUQgZeQnRoaVv55sBdYlalvpxF4f9LahrojwqgpT7u+Ka+kQxaaglD47agSlGiZskCFdm/FaVtBWgGaftX18HMRyRPkDYib/lwahPM+q/ARtD9kQ2mf8DJ/9rGtCxRLMpPnp1a9O5MfpJD9PjyufnIj+u+aqIfWx69ovfPP8gJ4/cEk1TYUEbJuAp7Cq2lLr6+krFnnR+DanVgEgs30dybOkkb+VewLofxHIevqmp+W7FlbwSYS10wyqEmTJ3vVLgjoMR/Y9P+X0J2zg2FXfWRzrXzPG+ERW1zHXY74nY5FA0t+WHoSy5Acfm5s+HiLWmsPmfmASxSTSuhixUir3BmS9LSkx4yEtrBv5odTWthzLHKbPhFEGcc4OjqhPwKyU/J4RmtvNOUsW93xi2ExB/gCmhyJxRd1T5MnSmQLyvY1FkYWK20Iu1u25mWOHnEbfJHTjBqgC7GKLBvRAAnQ4/vlKarAWSHNM/OP8MTlJZQx4q3eOIB6rY6ovjiHCuzOLJJi/eBL1GTyCJEzZBECIlCCGeP/6wWBwzXi8VrbUGmiyE7imPwmytUDEssJ9vX1T+Dh/vk1JZBeyB/trpEoftf/sMgb0JZU+aX2c9o71OVs+IgKKM3X/6pP/BN7lNO78="
-  bucket: thing-factory-static.octoblu.com
-  local_dir: dpl_assets
-  skip_cleanup: true
-  region: us-west-2
-  on:
-    tags: true
+  - provider: s3
+    access_key_id: AKIAJH2D5IPIRHYJT5IA
+    secret_access_key:
+      secure: >-
+        i2zBUK6wkRkncRMKgCz7EjKNBJLyw2Vww/mus3MYTtaLUQgZeQnRoaVv55sBdYlalvpxF4f9LahrojwqgpT7u+Ka+kQxaaglD47agSlGiZskCFdm/FaVtBWgGaftX18HMRyRPkDYib/lwahPM+q/ARtD9kQ2mf8DJ/9rGtCxRLMpPnp1a9O5MfpJD9PjyufnIj+u+aqIfWx69ovfPP8gJ4/cEk1TYUEbJuAp7Cq2lLr6+krFnnR+DanVgEgs30dybOkkb+VewLofxHIevqmp+W7FlbwSYS10wyqEmTJ3vVLgjoMR/Y9P+X0J2zg2FXfWRzrXzPG+ERW1zHXY74nY5FA0t+WHoSy5Acfm5s+HiLWmsPmfmASxSTSuhixUir3BmS9LSkx4yEtrBv5odTWthzLHKbPhFEGcc4OjqhPwKyU/J4RmtvNOUsW93xi2ExB/gCmhyJxRd1T5MnSmQLyvY1FkYWK20Iu1u25mWOHnEbfJHTjBqgC7GKLBvRAAnQ4/vlKarAWSHNM/OP8MTlJZQx4q3eOIB6rY6ovjiHCuzOLJJi/eBL1GTyCJEzZBECIlCCGeP/6wWBwzXi8VrbUGmiyE7imPwmytUDEssJ9vX1T+Dh/vk1JZBeyB/trpEoftf/sMgb0JZU+aX2c9o71OVs+IgKKM3X/6pP/BN7lNO78=
+    bucket: thing-factory-static.octoblu.com
+    local_dir: dpl_assets
+    skip_cleanup: true
+    region: us-west-2
+    'on':
+      tags: true
 after_success:
-- npm run coverage
-- npm run mocha:json
-- bash <(curl -s https://codecov.io/bash)
-- bash <(curl -s https://codecov.octoblu.com/bash)
+  - npm run coverage
+  - 'npm run mocha:json'
+  - 'bash <(curl -s https://codecov.io/bash)'
+  - 'bash <(curl -s https://codecov.octoblu.com/bash)'
+notifications:
+  webhooks:
+    - 'https://beekeeper.octoblu.com/webhooks/travis:ci'
